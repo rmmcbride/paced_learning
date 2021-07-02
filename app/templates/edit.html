@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+{% block title %}Edit{% endblock %}
+{% block content %}
+<div class="container is-fluid">
+    <div class="content">
+        <h1>Edit Card....</h1>
+        <form action="/submit" method="post" id="diff">
+            <div>
+                <label for="topic">Topic:</label>
+                <textarea id="topic" name="topic" rows="1" cols="30">
+                    {{topic}}
+                </textarea><br><br>
+            </div>
+            <div>
+                <label for="question">Question:</label>
+                <textarea id="question" name="question" rows="6" cols="150">
+                    {{question}}
+                </textarea><br><br>
+            </div>
+            <div>
+                <label for="answer">Answer:</label>
+                <textarea id="answer" name="answer" rrows="6" cols="150">
+                    {{answer}}
+                </textarea><br><br>
+            </div>
+            <div>
+                <input type="radio" id="VeryHard" name="difficulty" value=5>
+                <label for="VeryHard">Very Hard</label>
+            </div>
+            <div>
+                <input type="radio" id="Hard" name="difficulty" value=4>
+                <label for="Hard">Hard</label>
+            </div>
+            <div>
+                <input type="radio" id="OK" name="difficulty" value=3 checked>
+                <label for="OK">OK</label>
+            </div>
+            <div>
+                <input type="radio" id="Easy" name="difficulty" value=2>
+                <label for="Easy">Easy</label>
+            </div>
+            <div>
+                <input type="radio" id="VeryEasy" name="difficulty" value=1>
+                <label for="VeryEasy">Very Easy</label>
+            </div>
+             <input type="hidden" name="topic" value={{topic}} />
+             <input type="hidden" name="id" value={{id}} />
+            <div>
+                <input class="button is-primary" type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

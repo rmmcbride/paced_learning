@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block title %}Review{% endblock %}
+{% block content %}
+<div class="container is-fluid">
+    <div class="content">
+        <h1>Review</h1>
+        {{question}}
+         <form action="/answer" method="post" id="form1">
+             <input type="hidden" name="topic" value={{topic}} />
+             <input type="hidden" name="question_id" value={{id}} />
+            <br>
+                <button class="button is-primary">Get Answer</button>
+         </form>
+    </div>
+</div>
+{% endblock %}

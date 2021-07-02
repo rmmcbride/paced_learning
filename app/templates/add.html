@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+{% block title %}Answer{% endblock %}
+{% block content %}
+<div class="container is-fluid">
+    <div class="content">
+        <h1>Add a new card</h1>
+        <p>Please add the details for your new card below and press Submit when finished</p>
+        <form action="/add_card" method="post" id="add">
+            <div>
+                <label for="topic">Topic:</label>
+                <input type="text" id="topic" name="topic"><br><br>
+            </div>
+            <div>
+                <label for="question">Question:</label>
+                <br>
+                <textarea id="question" name="question" rows="6" cols="150">Enter your question here
+                </textarea><br><br>
+            </div>
+            <div>
+                <label for="answer">Answer:</label>
+                <br>
+                <textarea id="answer" name="answer" rows="6" cols="150">Enter your answer here
+                </textarea><br><br>
+            </div>
+            <br>Select the level of difficulty:<br>
+            <div>
+                <input type="radio" id="VeryHard" name="difficulty" value=5>
+                <label for="VeryHard">Very Hard</label>
+            </div>
+            <div>
+                <input type="radio" id="Hard" name="difficulty" value=4>
+                <label for="Hard">Hard</label>
+            </div>
+            <div>
+                <input type="radio" id="OK" name="difficulty" value=3 checked>
+                <label for="OK">OK</label>
+            </div>
+            <div>
+                <input type="radio" id="Easy" name="difficulty" value=2>
+                <label for="Easy">Easy</label>
+            </div>
+            <div>
+                <input type="radio" id="VeryEasy" name="difficulty" value=1>
+                <label for="VeryEasy">Very Easy</label>
+            </div>
+             <input type="hidden" name="topic" value={{topic}} />
+            <br>
+            <div>
+                <input class="button is-primary" type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

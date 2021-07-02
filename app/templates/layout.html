@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bulma.min.css') }}">
+    <title>{% block title %}Layout{% endblock %}</title>
+    {% endblock %}
+</head>
+<body>
+<div class="container is-fluid">
+    <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="/contents">Contents</a></li>
+            <li><a href="/review">Review</a></li>
+            <li><a href="/add">Add Cards</a></li>
+            <li><a href="/performance">Performance</a></li>
+        </ul>
+    </nav>
+    <div id="content">{% block content %} {% endblock %}
+    </div>
+    <div id="footer">
+      {% block footer %}
+        <br>
+      &copy; Created by Rachael McBride, 2021.
+      {% endblock %}
+    </div>
+</div>
+</body>
+</html>

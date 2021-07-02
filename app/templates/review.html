@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block title %}Review{% endblock %}
+{% block content %}
+<div class="container is-fluid">
+    <div class="content">
+        <h1>Review</h1>
+        <form action="/question" method="post" id="form1">
+            <p>Please select a topic:</p>
+            <br>
+            {% for item in topics %}
+                <br>
+                <input type="radio" id="{{item}}" name="topic" value="{{item}}" checked>
+                {{item}}
+                <br>
+            {% endfor %}
+            <br>
+            <br>
+            <input class="button is-primary" type="submit" value="Get Question">
+            <br>
+            <br>
+        </form>
+
+        <button class="button is-primary">Get Answer</button>
+
+    </div>
+</div>
+{% endblock %}

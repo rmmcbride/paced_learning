@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block title %}Contents{% endblock %}
+{% block content %}
+<div class="container is-fluid">
+    <div>
+        Last review: {{review_date}}
+    </div>
+    <div>
+        Number of cards: {{num_cards}}
+    </div>
+    <div>
+        {{ the_div|safe }}
+        <script src="http://cdn.pydata.org/bokeh/release/bokeh-2.3.2.min.js"></script>
+        {{ the_script|safe }}
+    </div>
+</div>
+{% endblock %}
