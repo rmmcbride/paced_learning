@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from flask import Markup
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine, func
 from datetime import datetime
@@ -9,6 +10,8 @@ import pandas as pd
 from bokeh.embed import components
 from bokeh.plotting import figure, output_file
 from bokeh.models import ColumnDataSource
+
+import marko
 
 app = Flask(__name__)
 app.config.from_pyfile('config.py')
@@ -66,7 +69,9 @@ def get_question():
     with Session() as session:
         card = session.query(CardModel).where(
             CardModel.topic == topic).order_by(CardModel.score.desc()).first()
-    return render_template("question.html", question=card.question.strip(), topic=topic.strip(), id=card.id)
+    return render_template("question.html", question=Markup(marko.convert(card.question.strip())),
+                           topic=topic.strip(),
+                           id=card.id)
 
 
 @app.route('/answer', methods=['POST', 'GET'])
@@ -74,7 +79,9 @@ def get_answer():
     card_id = request.form["question_id"]
     with Session() as session:
         card = session.query(CardModel).where(CardModel.id == card_id).first()
-    return render_template("answer.html", answer=card.answer.strip(), topic=request.form["topic"].strip(), id=card.id)
+    return render_template("answer.html", answer=Markup(marko.convert(card.answer.strip())),
+                           topic=request.form["topic"].strip(),
+                           id=card.id)
 
 
 @app.route('/difficulty', methods=['POST', 'GET'])
